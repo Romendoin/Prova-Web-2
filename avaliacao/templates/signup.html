@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block titulo %}
+    <title>Novo Cadastro</title>
+{% endblock %}
+
+{% block content %}
+    <div class="signup-tech-container">
+        <div class="signup-tech-card">
+            <div class="hologram-effect"></div>
+            
+            <h2 class="signup-tech-title">
+                <i class="bi bi-person-plus"></i> Registro de Novo Operador
+            </h2>
+            
+            <form method="post" class="signup-tech-form">
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control tech-input" name="name" id="name" value="{{ name or '' }}" placeholder=" " required>
+                    <label for="name">Identificação do Operador</label>
+                </div>
+                
+                <div class="form-floating mb-3">
+                    <input type="email" class="form-control tech-input" name="email" id="inputEmail" value="{{ email or '' }}" placeholder=" " required>
+                    <label for="inputEmail">Email de Acesso</label>
+                </div>
+                
+                <div class="form-floating mb-3">
+                    <input type="tel" class="form-control tech-input" name="celular" id="celular" value="{{ celular or '' }}" placeholder=" " required>
+                    <label for="celular">Código de Contato</label>
+                </div>
+            
+                <div class="form-floating mb-3">
+                    <input type="password" class="form-control tech-input" name="password" id="inputPassword" placeholder=" " required>
+                    <label for="inputPassword">Senha de Segurança</label>
+                </div>
+            
+                <div class="form-floating mb-4">
+                    <input type="password" class="form-control tech-input" name="confirmPassword" id="inputConfirmPassword" placeholder=" " required>
+                    <label for="inputConfirmPassword">Confirmação de Senha</label>
+                </div>
+                
+                <div class="d-grid gap-2">
+                    <button type="submit" class="btn btn-tech">
+                        <i class="bi bi-person-check"></i> Ativar Cadastro
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block titulo %}
+    <title>Novo Contato</title>
+{% endblock %}
+
+{% block content %}
+    <div class="tech-form-container">
+        <div class="tech-form-card">
+            <div class="hologram-effect"></div>
+            
+            <h2 class="tech-form-title">
+                <i class="bi bi-person-plus"></i> Registrar Novo Contato
+            </h2>
+            
+            <form method="post" class="tech-form">
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control tech-input" name="nome" 
+                           id="nome" value="{{ nome or '' }}" placeholder="Nome Completo" required>
+                    <label for="nome">Identificação</label>
+                </div>
+                
+                <div class="form-floating mb-3">
+                    <input type="email" class="form-control tech-input" name="email" 
+                           id="inputEmail" value="{{ email or '' }}" placeholder="contato@dominio.com" required>
+                    <label for="inputEmail">Canal de Comunicação</label>
+                </div>
+                
+                <div class="form-floating mb-4">
+                    <input type="tel" class="form-control tech-input" name="celular" 
+                           id="celular" value="{{ celular or '' }}" placeholder="(00) 00000-0000" required>
+                    <label for="celular">Código de Contato</label>
+                </div>
+                
+                <div class="tech-form-actions">
+                    <button type="submit" class="btn btn-tech-primary">
+                        <i class="bi bi-check-circle"></i> Confirmar Registro
+                    </button>
+                    <a href="{{ url_for('home') }}" class="btn btn-tech-secondary">
+                        <i class="bi bi-x-circle"></i> Cancelar
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}

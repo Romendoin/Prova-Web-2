@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{% block titulo %}
+    <title>Console Principal</title>
+{% endblock %}
+
+{% block content %}
+    <div class="dashboard-tech">
+        <h3 class="welcome-tech">
+            <i class="bi bi-terminal"></i> Console do Operador: <span class="text-neon">{{nome}}</span>
+        </h3>
+        
+        <div class="grid-contatos">
+            {% for contato in contatos %}
+            <div class="contato-card">
+                <div class="contato-header">
+                    <i class="bi bi-person-badge"></i>
+                    <h5>{{contato.nome}}</h5>
+                </div>
+                <div class="contato-info">
+                    <p><i class="bi bi-envelope"></i> {{contato.email}}</p>
+                    <p><i class="bi bi-phone"></i> {{contato.tel}}</p>
+                </div>
+                <div class="contato-actions">
+                    <a href="mensagem/{{contato.id}}" class="btn btn-tech-comms">
+                        <i class="bi bi-send"></i> Transmitir
+                    </a>
+                    <a href="editaContato/{{contato.id}}" class="btn btn-tech-edit">
+                        <i class="bi bi-pencil-square"></i> Configurar
+                    </a>
+                </div>
+            </div>
+            {% else %}
+            <div class="no-contatos">
+                <i class="bi bi-exclamation-triangle"></i>
+                <p>Nenhum contato cadastrado</p>
+            </div>
+            {% endfor %}
+        </div>
+        
+        <div class="dashboard-actions">
+            <a href="{{ url_for('novoContato') }}" class="btn btn-tech-primary">
+                <i class="bi bi-person-plus"></i> Novo Contato
+            </a>
+            <a href="{{ url_for('mensagensRecebidas') }}" class="btn btn-tech-inbox">
+                <i class="bi bi-inbox"></i> Caixa de Transmissões
+                {% if contarMensagensNaoLidas() > 0 %}
+                <span class="badge bg-pulse">{{ contarMensagensNaoLidas() }}</span>
+                {% endif %}
+            </a>
+        </div>
+    </div>
+{% endblock %}

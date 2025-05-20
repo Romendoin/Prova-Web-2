@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block titulo %}
+    <title>Atualizar Contato</title>
+{% endblock %}
+
+{% block content %}
+<div class="tech-edit-container">
+    <div class="tech-edit-card">
+        <div class="hologram-effect"></div>
+        
+        <h2 class="tech-edit-title">
+            <i class="bi bi-person-gear"></i> Atualizar Registro de Contato
+        </h2>
+        
+        <form method="POST" class="tech-edit-form">
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control tech-input" name="nome" 
+                       id="nome" value="{{ contato.nome }}" placeholder="Nome de Identificação" required>
+                <label for="nome">Identificação</label>
+            </div>
+            
+            <div class="form-floating mb-3">
+                <input type="email" class="form-control tech-input" name="email" 
+                       id="inputEmail" value="{{ contato.email }}" placeholder="canal@comunicacao.com" required>
+                <label for="inputEmail">Canal de Comunicação</label>
+            </div>
+            
+            <div class="form-floating mb-4">
+                <input type="tel" class="form-control tech-input" name="celular" 
+                       id="celular" value="{{ contato.tel }}" placeholder="(00) 00000-0000" required>
+                <label for="celular">Código de Contato</label>
+            </div>
+            
+            <div class="tech-edit-actions">
+                <button type="submit" class="btn btn-tech-update">
+                    <i class="bi bi-cloud-arrow-up"></i> Atualizar Registro
+                </button>
+                <a href="{{ url_for('home') }}" class="btn btn-tech-secondary">
+                    <i class="bi bi-x-circle"></i> Cancelar
+                </a>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

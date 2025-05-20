@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+
+{% block titulo %}
+    <title>Mensagens Recebidas</title>
+{% endblock %}
+
+{% block content %}
+<div class="tech-messages-container">
+    <h3 class="tech-messages-title">
+        <i class="bi bi-inbox"></i> Transmissões Recebidas
+    </h3>
+    
+    {% if mensagens %}
+        <div class="tech-messages-grid">
+            {% for msg in mensagens %}
+            <div class="tech-message-card {% if not msg.lida %}unread{% endif %}">
+                <div class="message-header">
+                    <div class="message-title">
+                        <i class="bi bi-asterisk"></i>
+                        <h4>{{ msg.titulo }}</h4>
+                    </div>
+                    <div class="message-meta">
+                        <span class="message-sender">
+                            <i class="bi bi-person"></i> {{ msg.remetente }}
+                        </span>
+                        <span class="message-date">
+                            <i class="bi bi-clock"></i> {{ msg.data }}
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="message-content">
+                    <p>{{ msg.texto }}</p>
+                </div>
+                
+                <div class="message-actions">
+                    {% if not msg.lida %}
+                    <a href="{{ url_for('marcarComoLida', id_mensagem=msg.id) }}" 
+                       class="btn btn-tech-action">
+                        <i class="bi bi-check-all"></i> Confirmar Recebimento
+                    </a>
+                    {% endif %}
+                    <a href="{{ url_for('responderMensagem', id_mensagem=msg.id) }}" 
+                       class="btn btn-tech-reply">
+                        <i class="bi bi-reply"></i> Responder
+                    </a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <div class="tech-empty-messages">
+            <i class="bi bi-inbox-fill"></i>
+            <p>Nenhuma transmissão recebida</p>
+        </div>
+    {% endif %}
+    
+    <a href="{{ url_for('home') }}" class="btn btn-tech-secondary mt-4">
+        <i class="bi bi-arrow-left"></i> Voltar ao Console
+    </a>
+</div>
+{% endblock %}

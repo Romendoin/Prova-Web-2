@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block titulo %}
+    <title>Acesso ao Sistema</title>
+{% endblock %}
+
+{% block content %}
+    <div class="login-tech-container">
+        <div class="login-tech-card">
+            
+            <h2 class="login-tech-title">
+                <i class="bi bi-fingerprint"></i> Autenticação Requerida
+            </h2>
+            
+            <form method="post" class="login-tech-form">
+                <div class="form-floating mb-3">
+                    <input name="email" type="email" class="form-control tech-input" placeholder="usuario@quantumcomm.com" required>
+                    <label>Email de Acesso</label>
+                </div>
+                
+                <div class="form-floating mb-4">
+                    <input name="password" type="password" class="form-control tech-input" placeholder="••••••••" required>
+                    <label>Código de Segurança</label>
+                </div>
+                
+                <button type="submit" class="btn btn-tech">
+                    <i class="bi bi-cpu"></i> Iniciar Sessão
+                </button>
+                
+                <div class="login-tech-links mt-4 text-center">
+                    <a href="signup" class="tech-link">
+                        <i class="bi bi-person-plus"></i> Novo Cadastro
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}

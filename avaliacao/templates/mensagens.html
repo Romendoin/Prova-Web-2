@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block titulo %}
+    <title>Responder Mensagem</title>
+{% endblock %}
+
+{% block content %}
+    <h3>Responder para: {{nome}}</h3>
+
+    <form method="post">
+        <div class="container">        
+            <div class="form-group">
+                <label>Título da Mensagem</label>
+                <input type="text" class="form-control" name="titulo" value="{{titulo}}" id="titulo">
+            </div>
+            <div class="form-group">
+                <label for="texto">Mensagem</label>
+                <textarea class="form-control" name="texto" id="texto" rows="6">
+                {{texto if texto}}
+
+                > ---------- Mensagem Original ----------
+                > {{mensagem_original.texto|replace('\n', '\n> ')}}
+                </textarea>
+            </div>
+        </div>    
+        <div class="espaco">
+            <button type="submit" class="btn btn-primary">Enviar Resposta</button>
+            <a href="{{ url_for('mensagensRecebidas') }}" class="btn btn-secondary">Cancelar</a>
+        </div>
+    </form>
+{% endblock %}

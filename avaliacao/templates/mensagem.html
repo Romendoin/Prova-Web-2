@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block titulo %}
+    <title>Nova Transmissão</title>
+{% endblock %}
+
+{% block content %}
+<div class="tech-message-container">
+    <div class="tech-message-card">
+        <div class="hologram-effect"></div>
+        
+        <h3 class="tech-message-recipient">
+            <i class="bi bi-node-plus"></i> Destinatário: <span class="text-neon">{{nome}}</span>
+        </h3>
+        
+        <form method="post" class="tech-message-form">
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control tech-input" name="titulo" 
+                       id="titulo" value="{{ titulo or '' }}" placeholder="Assunto da Transmissão" required>
+                <label for="titulo">Código da Transmissão</label>
+            </div>
+            
+            <div class="form-floating mb-4">
+                <textarea class="form-control tech-input" name="texto" 
+                          id="texto" placeholder="Conteúdo codificado" style="height: 200px" required>{{ texto or '' }}</textarea>
+                <label for="texto">Conteúdo da Transmissão</label>
+            </div>
+            
+            <div class="tech-message-actions">
+                <button type="submit" class="btn btn-tech-transmit">
+                    <i class="bi bi-send-fill"></i> Iniciar Transmissão
+                </button>
+                <a href="{{ url_for('home') }}" class="btn btn-tech-secondary">
+                    <i class="bi bi-x-circle"></i> Abortar
+                </a>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}
